@@ -1,6 +1,8 @@
 # RoboInvest
 RoboInvest is a stock market rating framework.
 
+RoboInvest is based on [twstock](https://github.com/mlouielu/twstock).
+
 ## How to Run
   RoboMain.py -h
   * -dt DATETIME, --datetime DATETIME          (Give a specific end date)
