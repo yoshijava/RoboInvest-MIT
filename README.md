@@ -8,7 +8,18 @@ RoboInvest 主要是以 twstock 改寫，增加了以下的功能
 * 除了使用 csv 檔, 亦提供 pandas_reader mode, 可以抓取即時股價, 在盤中時做個股評分
 * 技術分析目前實作 13 個, 範例都在 analytics.py 中, 所佔的分數比重目前全都設成一樣
 
+# 評分輸出範例:
+  * https://github.com/yoshijava/RoboInvest-MIT/blob/master/sample-20190930.cmd
+  * 各列代表意義
+    * 分數
+    * 股票代號
+    * 建議買入價格 (負數為作空)
+    * 停損價格
+    * Yahoo 連結方便看技術分析
+    * Rx: 代表的是 match 的技術指標
+    * M = [...] 代表的是 13 個技術指標的各項得分
 
+目前的分數是平均分配, 並不反應市場真實的情況, 使用者必須根據自己對技術指標的理解來分配權重, 甚至自行實作更多的技術指標.
 
 ## How to Run
   RoboMain.py -h
@@ -25,3 +36,4 @@ RoboInvest 主要是以 twstock 改寫，增加了以下的功能
 ## License
 RoboInvest is based on [twstock](https://github.com/mlouielu/twstock), and it follows the original license - MIT license.
 
+## 歡迎有興趣的網友一同加入討論與實作
