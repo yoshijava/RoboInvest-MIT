@@ -10,7 +10,7 @@ import datetime
 
 is_debug_mode = False
 is_multithread_mode = False
-is_pdr_mode = False
+is_pdr_mode = True
 
 def analyze(sid, endTimeObj):
     try:
@@ -33,7 +33,6 @@ if __name__ == "__main__":
     parser.add_argument("-dt", "--datetime", help="Give a specific end date")
     parser.add_argument("-u", "--update", help="Update stock codes", action="store_true")
     parser.add_argument("-d", "--debug", help="Debug mode", action="store_true")
-    parser.add_argument("-pdr", "--pandas_datareader", help="pandas_datareader mode", action="store_true")
     parser.add_argument("-s", "--single", help="Get a single stock ID evaluation")
     
     args = parser.parse_args()
@@ -48,8 +47,7 @@ if __name__ == "__main__":
         endTimeObj = datetime.datetime.strptime(args.datetime, '%Y%m%d')
     else:
         endTimeObj = None
-    if args.pandas_datareader:
-        is_pdr_mode = True
+    
     if args.single:
         codes = {args.single : codes[args.single]}
 

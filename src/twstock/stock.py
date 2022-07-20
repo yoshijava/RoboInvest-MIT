@@ -41,15 +41,9 @@ class TWSEFetcher(BaseFetcher):
             today = today - datetime.timedelta(days=1)
 
         cwd = os.getcwd()
-        dateparse = lambda dates: [pandas.datetime.strptime(d, '%Y-%m-%d') for d in dates]
-        if self.is_pdr_mode:
-            endTimeObj = today - datetime.timedelta(days=120)
-            df = pdr.get_data_yahoo(sid, endTimeObj, today)
-        else:
-            df = pandas.read_csv(cwd + "/StockHistory/%s.csv" % sid, parse_dates=['Date'], date_parser=dateparse, index_col=0,
-                                    skiprows=3, names=["Date", "High", "Low", "Open", "Close", "Volume", "Adj Close"])
-            endTimeObj = today - datetime.timedelta(days=120)
-            df = df[endTimeObj:today]
+        dateparse = lambda dates: [datetime.datetime.strptime(d, '%Y-%m-%d') for d in dates]
+        endTimeObj = today - datetime.timedelta(days=120)
+        df = pdr.get_data_yahoo(sid, endTimeObj, today)
         # print(df)
 
         jsonfile = df.transpose().to_json()
